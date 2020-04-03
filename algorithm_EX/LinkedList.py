@@ -1,6 +1,3 @@
-from util.Empty import Empty
-from util.Outbound import Outbound
-
 class Node:
     def __init__ (self, value = None, next = None):
         self.value = value
@@ -16,17 +13,17 @@ class LinkedList:
 
     def peek(self):
         if not self.head.next:
-            raise Empty( 'LinkedList is empty' )
+            raise ValueError( 'LinkedList is empty' )
         return self.head.next
 
     def get_first(self):
         if not self.head.next:
-            raise Empty( 'LinkedList is empty' )
+            raise ValueError( 'LinkedList is empty' )
         return self.head.next
         
     def get_last(self):
         if not self.head.next:
-            raise Empty( 'LinkedList is empty' )
+            raise ValueError( 'LinkedList is empty' )
         node = self.head
         while node.next != None:
             node = node.next
@@ -34,9 +31,9 @@ class LinkedList:
     
     def get(self, index):
         if (index < 0 or index >= self.length):
-            raise Outbound( 'index is out of bound' );
+            raise ValueError( 'index is out of bound' );
         if not self.head.next:
-            raise Empty( 'LinkedList is empty' )
+            raise ValueError( 'LinkedList is empty' )
         node = self.head.next
         for i in range(index):
             node = node.next
@@ -56,15 +53,15 @@ class LinkedList:
         
     def remove_first(self):
         if not self.head.next:
-            raise Empty( 'LinkedList is empty' )
-        value = self.head.next.value
+            raise ValueError( 'LinkedList is empty' )
+        node = self.head.next
         self.head.next = self.head.next.next
         self.length -= 1
-        return value    
+        return node.value    
         
     def remove_last(self):
         if not self.head.next:
-            raise Empty( 'LinkedList is empty' )
+            raise ValueError( 'LinkedList is empty' )
         node = self.head.next
         prev = self.head
         while node.next != None:

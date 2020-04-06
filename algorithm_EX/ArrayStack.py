@@ -21,7 +21,7 @@ class ArrayStack(object):
     # O(1)
     def pop(self):
         if self.is_empty( ):
-            raise Empty( 'Stack is empty' )
+            raise ValueError( 'Stack is empty' )
         return self._data.pop( )  
         
     def printstack(self):
